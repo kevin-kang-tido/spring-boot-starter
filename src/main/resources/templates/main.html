@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="">
 <h1 class="text-center font-monospace p-4 text-bg-primary">Welcome to PPUA Application</h1>
 <h2>
     Hello, <span th:text="${uname}">User</span>
@@ -39,21 +39,24 @@
 <!--this user -->
 
 <!--this is contact -->
-<h1>Welcome to Contact </h1>
-<table class="table">
-    <thead>
-    <tr><th>No<th>ContactName<th>Email<th>PhoneNumber
-    </thead>
-    <tbody>
-    <tr th:each="st:${contact}">
-        <td th:text="${st.id}">
-        <td th:text="${st.name}">
-        <td th:text="${st.email}">
-        <td th:text="${st.phone}">
-    <tr><td><a th:href="@{/addcontact}" class="btn btn-success">Add Contact</a>
-    </tbody>
-</table>
-<!--this is contact -->
+<h2 class="my-[60px] d-flex justify-content-center align-items-center">Welcome to Contact </h2>
+
+<div class="d-flex justify-content-center align-items-center">
+    <table class="table">
+        <thead>
+        <tr><th>No<th>ContactName<th>Email<th>PhoneNumber
+        </thead>
+        <tbody>
+        <tr th:each="st:${contact}">
+            <td th:text="${st.id}">
+            <td th:text="${st.name}">
+            <td th:text="${st.email}">
+            <td th:text="${st.phone}">
+        <tr><td><a th:href="@{/api/v1/contact/addcontact}" class="btn btn-success">Add Contact</a>
+        </tbody>
+    </table>
+    <!--this is contact -->
+</div>
 
 
 
