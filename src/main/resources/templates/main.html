@@ -1,66 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Form</title>
-    <!-- Link to Bootstrap CSS CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
-<body class="">
-<h1 class="text-center font-monospace p-4 text-bg-primary">Welcome to PPUA Application</h1>
-<h2>
-    Hello, <span th:text="${uname}">User</span>
-</h2>
-<hr>
-<!--this user -->
-<h2>Appointment List</h2>
-<div class="align-items-center justify-content-center d-flex font-monospace m-4">
-    <table class="table table-bordered table-hover"  >
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Username</th>
-            <th scope="col">AppointDate</th>
-            <th scope="col">Location</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="st : ${ap}">
-            <td  th:text="${st.id}">1</td>
-            <td th:text="${st.uname}">Example Username</td>
-            <td th:text="${st.apdate}">2024-10-26</td>
-            <td th:text="${st.location}">Example Location</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<!--this user -->
+<body>
+    <!-- Navigation Fragment -->
+    <div th:insert="common::navig"></div>
 
-<!--this is contact -->
-<h2 class="my-[60px] d-flex justify-content-center align-items-center">Welcome to Contact </h2>
+    <h1 class="text-center font-monospace p-4 text-bg-primary">Welcome to PPUA Application</h1>
+    <hr>
 
-<div class="d-flex justify-content-center align-items-center">
-    <table class="table">
-        <thead>
-        <tr><th>No<th>ContactName<th>Email<th>PhoneNumber
-        </thead>
-        <tbody>
-        <tr th:each="st:${contact}">
-            <td th:text="${st.id}">
-            <td th:text="${st.name}">
-            <td th:text="${st.email}">
-            <td th:text="${st.phone}">
-        <tr><td><a th:href="@{/api/v1/contact/addcontact}" class="btn btn-success">Add Contact</a>
-        </tbody>
-    </table>
-    <!--this is contact -->
-</div>
+    <!-- Contact List -->
+    <h2 class="my-5 text-center">Contact List</h2>
+    <div class="container">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Contact Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="st : ${contact}">
+                    <td th:text="${st.id}"></td>
+                    <td th:text="${st.name}"></td>
+                    <td th:text="${st.email}"></td>
+                    <td th:text="${st.phone}"></td>
+                    <td></td>
+                    <!-- <td th:text="${st.des}"></td> -->
+                    <td>
+                        <a th:href="@{/api/v1/contact/show/{id}(id=${st.id})}" class="btn btn-primary btn-sm">Update</a>
+                    </td>                    
+                    <td>
+                        <a th:href="@{/api/v1/contact/delete/{id}(id=${st.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>                    
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-lelf m-12">
+            <a th:href="@{/api/v1/contact/addcontact}" class="btn btn-success">Add Contact</a>
+        </div>
+    </div>
 
-
-
+    <!-- Footer Fragment -->
+    <div th:insert="common::myfooter"></div>
 </body>
-<script th:src="@{webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{webjars/jquery/3.7.1/jquery.min.js}"></script>
 </html>

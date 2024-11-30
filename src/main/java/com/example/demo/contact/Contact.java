@@ -22,6 +22,8 @@ public class Contact {
     private String email;
     @Size(min=9,message = "You must type at leas 9 characters")
     private String phone; 
+    @Size(max=255, message = "Description must be less than 255 characters")
+    private String des; // Add this field
 
 }
 
